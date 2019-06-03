@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchPost } from "../actions";
+import UserHeader from "./UserHeader";
 
 class PostList extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class PostList extends Component {
         <div className="card border border-primary mb-3" key={post.id}>
           <div className="card-body">
             <div className="media">
-              <a className="d-flex align-self-center" href="#">
+              <a className="d-flex align-self-center">
                 <img
                   src=""
                   className="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
@@ -24,6 +25,7 @@ class PostList extends Component {
               <div className="media-body">
                 <h5>{post.title}</h5>
                 <p>{post.body}</p>
+                <UserHeader userId={post.userId} />
               </div>
             </div>
           </div>
