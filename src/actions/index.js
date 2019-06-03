@@ -3,12 +3,11 @@ import _ from "lodash";
 
 /**
  * Redux thunk Syntax:
- * const name = (params) => async (dispatch) => {
+|--------------------------------------------------
+const name = (params) => async (dispatch) => {
     const resonse = await <API REQUEST>
     dispatch({ type: , payload:  });
  }
-|--------------------------------------------------
-| 
 |--------------------------------------------------
 */
 export const fetchPost = () => async dispatch => {
