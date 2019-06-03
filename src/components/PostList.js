@@ -7,10 +7,10 @@ class PostList extends Component {
     this.props.fetchPost();
   }
 
-  render() {
-    return (
-      <div>
-        <div className="card">
+  renderList = () => {
+    return this.props.posts.map(post => {
+      return (
+        <div className="card border border-primary mb-3" key={post.id}>
           <div className="card-body">
             <div className="media">
               <a className="d-flex align-self-center" href="#">
@@ -22,18 +22,26 @@ class PostList extends Component {
               </a>
 
               <div className="media-body">
-                <h5>Media heading</h5>
-                <p>Media text</p>
+                <h5>{post.title}</h5>
+                <p>{post.body}</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    });
+  };
+
+  render() {
+    return <div>{this.renderList()}</div>;
   }
 }
 
+const mapStateToProps = state => {
+  return { posts: state.posts };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { fetchPost }
 )(PostList);
